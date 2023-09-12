@@ -4,7 +4,7 @@ const submitBtn = document.querySelector(".submit");
 const checkbox = document.querySelectorAll(".checkbox");
 const deleteBox = document.querySelectorAll(".delete");
 const completedNumber = document.querySelector(".completed_number");
-
+const moreNew = document.querySelector(".new_outer");
 const top = document.querySelector(".top");
 const doneSection = document.querySelector(".done_section");
 let shoppingList = [];
@@ -34,7 +34,12 @@ function Newitem() {
   localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
 
   newItem.value = "";
+  moreNew.classList.add("hidden");
 }
+
+newItem.addEventListener("click", () => {
+  moreNew.classList.remove("hidden");
+});
 
 submitBtn.addEventListener("click", () => {
   let newObject = {};
@@ -53,7 +58,7 @@ submitBtn.addEventListener("click", () => {
   displayList(shoppingList);
 
   localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
+  moreNew.classList.add("hidden");
   newItem.value = "";
 });
 
@@ -76,7 +81,7 @@ newItem.addEventListener("keypress", function (event) {
     displayList(shoppingList);
 
     localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
+    moreNew.classList.add("hidden");
     newItem.value = "";
     count.value = "";
   }
@@ -101,7 +106,7 @@ count.addEventListener("keypress", function (event) {
     displayList(shoppingList);
 
     localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
+    moreNew.classList.add("hidden");
     newItem.value = "";
     count.value = "";
   }

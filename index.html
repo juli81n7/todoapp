@@ -28,11 +28,21 @@
           <h2 class="list_name">Shopping</h2>
           <p><span class="completed_number"></span></p>
         </header>
-        <div class="new">
-          <input class="new_item" type="text" name="new_item" id="1" placeholder="New to do" />
-          <input type="number" class="count" placeholder="Amount" />
-          <button class="submit">Submit</button>
+        <div class="new_outer hidden">
+          <div class="new">
+            <input class="new_item" type="text" name="new_item" id="1" placeholder="New to do" />
+            <input type="number" class="count" placeholder="Amount" />
+            <button class="submit">Submit</button>
+          </div>
+
+          <div class="more_new_container">
+            <div class="more_new_inner">
+              <input class="date" type="date" />
+              <textarea name="more_info" id="more_info" cols="70" rows="5" class="more_info" placeholder="More info"></textarea>
+            </div>
+          </div>
         </div>
+
         <div class="to_do_list"></div>
 
         <div class="done_section hidden">
