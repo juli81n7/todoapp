@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
 
     <script type="module" src="script.js"></script>
     <title>Document</title>
@@ -16,18 +16,15 @@
       <h1>ToDo</h1>
     </header>
     <main>
-      <section class="menu">
-        <button class="starred">Starred</button>
-        <button class="shopping">Shopping</button>
-        <button class="home">Home</button>
-        <button class="work">Work</button>
-      </section>
-
       <section class="list">
         <header>
-          <h2 class="list_name">Shopping</h2>
+          <select name="list_name" id="list_name" class="list_name">
+            <option value="shoppinList">Shopping</option>
+            <option value="work">Work</option>
+          </select>
           <p><span class="completed_number"></span></p>
         </header>
+        <h5 class="alert no">*you have to add content befor submitting your todo</h5>
         <div class="new">
           <input class="new_item" type="text" name="new_item" id="1" placeholder="New to do" />
           <input type="number" class="count" placeholder="Amount" />
@@ -38,7 +35,9 @@
         <div class="done_section hidden">
           <div class="top">
             <h4>Done</h4>
-            <img class="x" src="x.svg" alt="x" />
+            <svg class="x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+              <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
           </div>
           <div class="done_list_conatiner">
             <div class="done_list"></div>
@@ -60,7 +59,11 @@
           <input type="number" name="" id="" class="antal" />
         </div>
         <label for="delete" class="delete">
-          <img src="delete.svg" alt="" />
+          <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+            <path
+              d="M261-120q-24.75 0-42.375-17.625T201-180v-570h-11q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T190-810h158q0-13 8.625-21.5T378-840h204q12.75 0 22.375 8.625T612-810h158q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T770-750h-11v570q0 24.75-17.625 42.375T699-120H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z"
+            />
+          </svg>
         </label>
       </div>
     </template>

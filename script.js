@@ -4,10 +4,16 @@ const submitBtn = document.querySelector(".submit");
 const checkbox = document.querySelectorAll(".checkbox");
 const deleteBox = document.querySelectorAll(".delete");
 const completedNumber = document.querySelector(".completed_number");
+const alert = document.querySelector(".alert");
+
+const listselecter = document.querySelector(".list_name");
+let selectedList = listselecter.value;
 
 const top = document.querySelector(".top");
 const doneSection = document.querySelector(".done_section");
+
 let shoppingList = [];
+let work = [];
 
 window.onload = function () {
   let lS = JSON.parse(localStorage.getItem("shoppingList"));
@@ -34,32 +40,13 @@ function Newitem() {
   localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
 
   newItem.value = "";
+  count.value = "";
 }
 
 submitBtn.addEventListener("click", () => {
-  let newObject = {};
-  let newid = shoppingList.length;
-  newObject.text = newItem.value;
-  newObject.count = count.value;
-  newObject.id = newid;
-  newObject.completed = false;
-  newObject.deleted = false;
-
-  console.log(shoppingList);
-  console.log(newObject);
-
-  shoppingList.push(newObject);
-
-  displayList(shoppingList);
-
-  localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
-  newItem.value = "";
-});
-
-newItem.addEventListener("keypress", function (event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
+  if (newItem.value === "") {
+    alert.classList.remove("no");
+  } else {
     let newObject = {};
     let newid = shoppingList.length;
     newObject.text = newItem.value;
@@ -79,31 +66,66 @@ newItem.addEventListener("keypress", function (event) {
 
     newItem.value = "";
     count.value = "";
+    alert.classList.add("no");
+  }
+});
+
+newItem.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    if (newItem.value === "") {
+      alert.classList.remove("no");
+    } else {
+      let newObject = {};
+      let newid = shoppingList.length;
+      newObject.text = newItem.value;
+      newObject.count = count.value;
+      newObject.id = newid;
+      newObject.completed = false;
+      newObject.deleted = false;
+
+      console.log(shoppingList);
+      console.log(newObject);
+
+      shoppingList.push(newObject);
+
+      displayList(shoppingList);
+
+      localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
+
+      newItem.value = "";
+      count.value = "";
+      alert.classList.add("no");
+    }
   }
 });
 
 count.addEventListener("keypress", function (event) {
   // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    let newObject = {};
-    let newid = shoppingList.length;
-    newObject.text = newItem.value;
-    newObject.count = count.value;
-    newObject.id = newid;
-    newObject.completed = false;
-    newObject.deleted = false;
+    if (newItem.value === "") {
+      alert.classList.remove("no");
+    } else {
+      let newObject = {};
+      let newid = shoppingList.length;
+      newObject.text = newItem.value;
+      newObject.count = count.value;
+      newObject.id = newid;
+      newObject.completed = false;
+      newObject.deleted = false;
 
-    console.log(shoppingList);
-    console.log(newObject);
+      console.log(shoppingList);
+      console.log(newObject);
 
-    shoppingList.push(newObject);
+      shoppingList.push(newObject);
 
-    displayList(shoppingList);
+      displayList(shoppingList);
 
-    localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
+      localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
 
-    newItem.value = "";
-    count.value = "";
+      newItem.value = "";
+      alert.classList.add("no");
+    }
   }
 });
 
