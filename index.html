@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script type="module" src="script.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>ToDo</h1>
+    </header>
+    <main>
+      <section class="menu">
+        <button class="starred">Starred</button>
+        <button class="shopping">Shopping</button>
+        <button class="home">Home</button>
+        <button class="work">Work</button>
+      </section>
+
+      <section class="list">
+        <header>
+          <h2 class="list_name">Shopping</h2>
+          <p><span class="completed_number"></span></p>
+        </header>
+        <div class="new">
+          <input class="new_item" type="text" name="new_item" id="1" placeholder="New to do" />
+          <input type="number" class="count" placeholder="Amount" />
+          <button class="submit">Submit</button>
+        </div>
+        <div class="to_do_list"></div>
+
+        <div class="done_section hidden">
+          <div class="top">
+            <h4>Done</h4>
+            <img class="x" src="x.svg" alt="x" />
+          </div>
+          <div class="done_list_conatiner">
+            <div class="done_list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <template id="item">
+      <div class="item" id="">
+        <div class="left">
+          <div class="checkbox">
+            <div class="checked">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
+            </div>
+          </div>
+
+          <h3>Det her er et to do item</h3>
+          <input type="number" name="" id="" class="antal" />
+        </div>
+        <label for="delete" class="delete">
+          <img src="delete.svg" alt="" />
+        </label>
+      </div>
+    </template>
+  </body>
+</html>
