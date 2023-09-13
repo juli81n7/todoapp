@@ -1,51 +1,40 @@
+// theme selector
+const select = document.querySelector("select");
+const body = document.querySelector("body");
+
+// input for new item
 const newItem = document.querySelector(".new_item");
 const count = document.querySelector(".count");
+const date = document.querySelector(".date");
+const notes = document.querySelector(".more_info");
 const submitBtn = document.querySelector(".submit");
-const checkbox = document.querySelectorAll(".checkbox");
-const deleteBox = document.querySelectorAll(".delete");
-const completedNumber = document.querySelector(".completed_number");
+const moreNew = document.querySelector(".new_outer");
+
+// error message for new item
 const alert = document.querySelector(".alert");
+// number of completed
+const completedNumber = document.querySelector(".completed_number");
 
-const listselecter = document.querySelector(".list_name");
-let selectedList = listselecter.value;
-
+//showing done
 const top = document.querySelector(".top");
 const doneSection = document.querySelector(".done_section");
+const doneHeader = document.querySelector(".done_header");
 
+//defining array
 let shoppingList = [];
-let work = [];
 
 window.onload = function () {
   let lS = JSON.parse(localStorage.getItem("shoppingList"));
   console.log(lS);
   shoppingList = lS;
   displayList(shoppingList);
+  alert.classList.add("no");
 };
-function Newitem() {
-  let newObject = {};
-  let newid = shoppingList.length;
-  newObject.text = newItem.value;
-  newObject.count = count.value;
-  newObject.id = newid;
-  newObject.completed = false;
-  newObject.deleted = false;
 
-  console.log(shoppingList);
-  console.log(newObject);
-
-  shoppingList.push(newObject);
-
-  displayList(shoppingList);
-
-  localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
-  newItem.value = "";
-  count.value = "";
-}
-
-submitBtn.addEventListener("click", () => {
+function createNewObject() {
   if (newItem.value === "") {
     alert.classList.remove("no");
+    console.log("error");
   } else {
     let newObject = {};
     let newid = shoppingList.length;
@@ -54,78 +43,55 @@ submitBtn.addEventListener("click", () => {
     newObject.id = newid;
     newObject.completed = false;
     newObject.deleted = false;
+    newObject.notes = notes.value;
+    newObject.date = date.value;
 
     console.log(shoppingList);
     console.log(newObject);
 
     shoppingList.push(newObject);
 
-    displayList(shoppingList);
-
     localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
+    displayList(shoppingList);
 
     newItem.value = "";
     count.value = "";
+    date.value = "";
+    notes.value = "";
+    moreNew.classList.add("hidden");
     alert.classList.add("no");
   }
+}
+
+newItem.addEventListener("click", () => {
+  moreNew.classList.remove("hidden");
+  alert.classList.add("no");
 });
 
+submitBtn.addEventListener("click", createNewObject());
+
 newItem.addEventListener("keypress", function (event) {
-  // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    if (newItem.value === "") {
-      alert.classList.remove("no");
-    } else {
-      let newObject = {};
-      let newid = shoppingList.length;
-      newObject.text = newItem.value;
-      newObject.count = count.value;
-      newObject.id = newid;
-      newObject.completed = false;
-      newObject.deleted = false;
-
-      console.log(shoppingList);
-      console.log(newObject);
-
-      shoppingList.push(newObject);
-
-      displayList(shoppingList);
-
-      localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
-      newItem.value = "";
-      count.value = "";
-      alert.classList.add("no");
-    }
+    createNewObject();
   }
 });
 
 count.addEventListener("keypress", function (event) {
   // If the user presses the "Enter" key on the keyboard
   if (event.key === "Enter") {
-    if (newItem.value === "") {
-      alert.classList.remove("no");
-    } else {
-      let newObject = {};
-      let newid = shoppingList.length;
-      newObject.text = newItem.value;
-      newObject.count = count.value;
-      newObject.id = newid;
-      newObject.completed = false;
-      newObject.deleted = false;
-
-      console.log(shoppingList);
-      console.log(newObject);
-
-      shoppingList.push(newObject);
-
-      displayList(shoppingList);
-
-      localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
-
-      newItem.value = "";
-      alert.classList.add("no");
-    }
+    createNewObject();
+  }
+});
+date.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    createNewObject();
+  }
+});
+notes.addEventListener("keypress", function (event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    createNewObject();
   }
 });
 
@@ -144,11 +110,41 @@ function displayList(list) {
       cloneToDo.querySelector(".antal").value = item.count;
     } else {
       cloneToDo.querySelector(".antal").classList.add("remove");
+      cloneToDo.querySelector(".antal_label").classList.add("remove");
+    }
+
+    if (item.date) {
+      cloneToDo.querySelector(".date").value = item.date;
+    } else {
+      cloneToDo.querySelector(".date").classList.add("remove");
+      cloneToDo.querySelector(".date_label").classList.add("remove");
+    }
+    if (item.notes) {
+      cloneToDo.querySelector(".setnotes").textContent = item.notes;
+    } else {
+      cloneToDo.querySelector(".set_notes_label").classList.add("remove");
+      cloneToDo.querySelector(".setnotes").classList.add("remove");
+      cloneToDo.querySelector(".set_notes").classList.add("remove");
+    }
+
+    if (item.notes || item.date || item.count) {
+    } else {
+      cloneToDo.querySelector(".view_more_btn").classList.add("remove");
+      cloneToDo.querySelector(".item_content_outer").classList.add("remove");
     }
 
     cloneToDo.querySelector(".item").id = item.id;
 
     cloneToDo.querySelector(".delete").id = item.id;
+
+    cloneToDo.querySelector(".item").addEventListener("click", expand);
+    function expand() {
+      if (this.classList.contains("hidden")) {
+        this.classList.remove("hidden");
+      } else {
+        this.classList.add("hidden");
+      }
+    }
 
     cloneToDo.querySelector(".delete").addEventListener("click", deleteClick);
 
@@ -176,6 +172,7 @@ function displayList(list) {
     } else if (item.completed === true) {
       cloneToDo.querySelector(".checkbox").classList.add("active");
       completedAmount = ++completedAmount;
+      doneHeader.textContent = "Done ( " + completedAmount + " )";
       completedNumber.textContent = `${completedAmount} Completed  `;
       document.querySelector(".done_list").appendChild(cloneToDo);
     }
@@ -214,5 +211,32 @@ completedNumber.addEventListener("click", () => {
   if (doneSection.classList.contains("hidden")) doneSection.classList.remove("hidden");
   else {
     doneSection.classList.add("hidden");
+  }
+});
+
+window.onclick = function (event) {
+  if (event.target.contains(moreNew) && event.target !== moreNew) {
+    console.log("You clicked outside the box!");
+    moreNew.classList.add("hidden");
+    alert.classList.add("no");
+  } else {
+    console.log("You clicked inside the box!");
+  }
+};
+
+select.addEventListener("change", () => {
+  const selectValue = select.value;
+  if (selectValue === "light") {
+    body.dataset.theme = "light";
+    console.log("fuck af lyst");
+    localStorage.setItem("theme", "light");
+  } else if (selectValue === "dark") {
+    body.dataset.theme = "dark";
+    console.log("fuck af mørkt");
+    localStorage.setItem("theme", "dark");
+  } else if (selectValue === "hawaii") {
+    body.dataset.theme = "hawaii";
+    console.log("fuck af hawaii");
+    localStorage.setItem("theme", "hawaii");
   }
 });

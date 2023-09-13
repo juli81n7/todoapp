@@ -11,9 +11,13 @@
     <script type="module" src="script.js"></script>
     <title>Document</title>
   </head>
-  <body>
-    <header>
+  <body data-theme="light">
+    <header class="first_header">
       <h1>ToDo</h1>
+      <select name="theme" id="1">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
     </header>
     <main>
       <section class="list">
@@ -23,15 +27,29 @@
         </header>
         <div class="new_outer hidden">
           <div class="new">
-            <input class="new_item" type="text" name="new_item" id="1" placeholder="New to do" />
-            <input type="number" class="count" placeholder="Amount" />
-            <button class="submit">Submit</button>
+            <input class="new_item" type="text" name="new_item" id="2" placeholder="New to do" />
+            <div class="flex">
+              <p class="alert no">*You have to add content before adding your todo</p>
+              <button class="submit">Submit</button>
+            </div>
           </div>
 
           <div class="more_new_container">
             <div class="more_new_inner">
-              <input class="date" type="date" />
-              <textarea name="more_info" id="more_info" cols="70" rows="5" class="more_info" placeholder="More info"></textarea>
+              <div class="first_extra">
+                <div>
+                  <label for="count">Amount</label>
+                  <input id="count" name="count" type="number" class="count" placeholder="1" />
+                </div>
+                <div>
+                  <label for="date">Date</label>
+                  <input id="date" class="date" type="date" />
+                </div>
+              </div>
+              <div>
+                <label for="more_info">Notes</label>
+                <textarea name="more_info" id="more_info" cols="70" rows="5" class="more_info" placeholder="More info"></textarea>
+              </div>
             </div>
           </div>
         </div>
@@ -39,7 +57,7 @@
 
         <div class="done_section hidden">
           <div class="top">
-            <h4>Done</h4>
+            <h4 class="done_header">Done</h4>
             <svg class="x" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
               <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg>
@@ -52,16 +70,41 @@
     </main>
 
     <template id="item">
-      <div class="item" id="">
-        <div class="left">
-          <div class="checkbox">
-            <div class="checked">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
+      <div class="item hidden" id="">
+        <div class="content">
+          <div class="left">
+            <div class="first">
+              <div class="checkbox">
+                <div class="checked">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" /></svg>
+                </div>
+              </div>
+              <h3>Det her er et to do item</h3>
             </div>
+            <p class="view_more_btn">View more</p>
           </div>
 
-          <h3>Det her er et to do item</h3>
-          <input type="number" name="" id="" class="antal" />
+          <div class="item_content_outer">
+            <div class="item_content_inner">
+              <div class="flex big">
+                <div>
+                  <div class="flex">
+                    <label class="antal_label" for="antal">Amount:</label>
+                    <input type="number" name="" id="antal" class="antal" />
+                  </div>
+                  <div class="flex">
+                    <label class="date_label" for="setdate">Date:</label>
+                    <input type="date" name="" id="setdate" class="date" />
+                  </div>
+                </div>
+                <div class="set_notes">
+                  <p class="set_notes_label">Notes</p>
+
+                  <p class="setnotes"></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <label for="delete" class="delete">
           <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
