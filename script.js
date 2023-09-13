@@ -22,6 +22,7 @@ const doneHeader = document.querySelector(".done_header");
 
 //defining array
 let shoppingList = [];
+let newid = 0;
 
 window.onload = function () {
   let lS = JSON.parse(localStorage.getItem("shoppingList"));
@@ -40,9 +41,9 @@ function createNewObject() {
     console.log("error");
   } else {
     let newObject = {};
-    let newid = shoppingList.length;
-    newObject.text = newItem.value;
+    newid = ++newid;
     newObject.count = count.value;
+    newObject.text = newItem.value;
     newObject.id = newid;
     newObject.completed = false;
     newObject.deleted = false;
