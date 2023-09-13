@@ -28,7 +28,7 @@ window.onload = function () {
   let lS = JSON.parse(localStorage.getItem("shoppingList"));
   console.log(lS);
   shoppingList = lS;
-  if (shoppingList.length === 0) {
+  if (shoppingList.length > 0) {
     displayList(shoppingList);
   }
 
