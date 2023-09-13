@@ -27,7 +27,10 @@ window.onload = function () {
   let lS = JSON.parse(localStorage.getItem("shoppingList"));
   console.log(lS);
   shoppingList = lS;
-  displayList(shoppingList);
+  if (shoppingList.length === 0) {
+    displayList(shoppingList);
+  }
+
   alert.classList.add("no");
 };
 
