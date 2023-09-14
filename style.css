@@ -565,7 +565,7 @@ select:focus {
 }
 
 svg.delete {
-  display: none;
+  display: none !important;
   margin-top: 0;
   align-self: center;
   fill: var(--primarycolor);
@@ -609,6 +609,7 @@ svg.delete {
 
   .close_menu {
     fill: var(--primarycolor);
+    display: block;
   }
   .menu_top select {
     margin-top: 0rem;
