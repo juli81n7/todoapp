@@ -601,7 +601,9 @@ svg.delete {
   svg.delete {
     display: block;
   }
-
+  .menu_btn_open {
+    display: block;
+  }
   .menu_top {
     display: flex;
     justify-content: space-between;
