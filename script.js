@@ -35,6 +35,7 @@ console.log(lists);
 let newid = 0;
 
 window.onload = function () {
+  body.dataset.theme = "light";
   if (localStorage.getItem("lists") !== null) {
     console.log("DEN ER GOD NOK");
     let lS = localStorage.getItem("lists");
