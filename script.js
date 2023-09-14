@@ -111,7 +111,7 @@ function createNewListBtn(name) {
   cloneBtn.querySelector("button").classList.add(newClassName);
   cloneBtn.querySelector("button").classList.add("active");
   document.querySelector(".btn_list_inner").appendChild(cloneBtn);
-  showNewList(obj.name);
+  showNewList(name);
   // cloneBtn.querySelector("button").addEventListener("click", (e) => {
   //   // Remove the "active" class from all buttons
   //   document.querySelectorAll(".btn_list_inner button").forEach((btn) => {
