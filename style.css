@@ -570,6 +570,9 @@ svg.delete {
   align-self: center;
   fill: var(--primarycolor);
 }
+.close_menu {
+  display: none;
+}
 
 .menu_btn_open {
   fill: var(--primarycolor);
