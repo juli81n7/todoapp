@@ -575,6 +575,7 @@ svg.delete {
 }
 
 .menu_btn_open {
+  display: none;
   fill: var(--primarycolor);
   padding: 1rem;
   padding-left: 0rem;
