@@ -565,7 +565,49 @@ select:focus {
 }
 
 svg.delete {
+  display: none;
   margin-top: 0;
   align-self: center;
   fill: var(--primarycolor);
+}
+
+.menu_btn_open {
+  fill: var(--primarycolor);
+  padding: 1rem;
+  padding-left: 0rem;
+}
+@media (max-width: 600px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .menu {
+    position: absolute;
+    transform-origin: right;
+    left: -100%;
+    background-color: var(--secondarycolor);
+    transition: 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+    z-index: 9999;
+  }
+  .menu.display {
+    left: 0%;
+    transition: 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  svg.delete {
+    display: block;
+  }
+
+  .menu_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .close_menu {
+    fill: var(--primarycolor);
+  }
+  .menu_top select {
+    margin-top: 0rem;
+  }
 }

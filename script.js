@@ -2,6 +2,11 @@
 const select = document.querySelector("select");
 const body = document.querySelector("body");
 
+//menu
+const showmenubtn = document.querySelector(".menu_btn_open");
+const menu = document.querySelector(".menu");
+const closeMenu = document.querySelector(".close_menu");
+
 // input for new item
 const newItem = document.querySelector(".new_item");
 const count = document.querySelector(".count");
@@ -400,3 +405,10 @@ select.addEventListener("change", () => {
 //   displayList(currentlist);
 
 // }
+
+showmenubtn.addEventListener("click", () => {
+  menu.classList.add("display");
+});
+closeMenu.addEventListener("click", () => {
+  menu.classList.remove("display");
+});
