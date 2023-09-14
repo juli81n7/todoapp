@@ -110,7 +110,7 @@ function createNewListBtn(name) {
   cloneBtn.querySelector("button").classList.add(newClassName);
   cloneBtn.querySelector("button").classList.add("active");
   document.querySelector(".btn_list_inner").appendChild(cloneBtn);
-
+  showNewList(obj.name);
   cloneBtn.querySelector("button").addEventListener("click", (e) => {
     // Remove the "active" class from all buttons
     document.querySelectorAll(".btn_list_inner button").forEach((btn) => {
@@ -119,8 +119,6 @@ function createNewListBtn(name) {
 
     // Add the "active" class to the clicked button
     e.target.classList.add("active");
-
-    showNewList(obj.name);
   });
 }
 
