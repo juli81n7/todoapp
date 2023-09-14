@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 * {
   margin: 0;
   font-family: "Marcellus", serif;
@@ -16,9 +21,21 @@
   --inputtheme: light;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 230px auto;
+  height: 100%;
+  gap: 1rem;
+}
+
+.menu {
+  height: 100%;
+  width: 230px;
+  border-right: 1px solid var(--primarycolor);
+  padding: 0.5rem;
+}
+
 h1 {
-  margin-left: 2rem;
-  margin-top: 1rem;
   font-size: 2rem;
 }
 label {
@@ -110,14 +127,10 @@ input[type="date"]:focus {
 }
 body {
   background-color: var(--secondarycolor);
+  height: 100%;
 }
 .to_do_list {
   min-height: 7rem;
-}
-
-main {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .list {
@@ -151,29 +164,71 @@ main {
 }
 
 .menu {
-  border-radius: 0.9rem;
   gap: 0.5rem;
-  height: 100%;
 }
 
-.menu button:first-of-type {
-  border-top: 1px solid var(--primarycolor);
+button {
+  cursor: pointer;
+}
+
+.menu .new_list {
+  color: var(--primarycolor);
+  background-color: var(--secondarycolor) !important;
+  font-size: 1.3rem;
+  border: 1px solid var(--primarycolor);
+  max-height: 5rem;
+  width: 92%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.menu .new_list.no {
+  display: none;
+}
+
+.menu button {
+  border: none;
+  padding: 0.5rem;
+  color: var(--primarycolor);
+  background-color: var(--secondarycolor);
+  font-size: 1.3rem;
+  border: 1px solid var(--primarycolor);
+
+  max-height: 5rem;
+  width: 100%;
+}
+
+.menu button.active {
   background-color: var(--primarycolor);
   color: var(--secondarycolor);
 }
 
 .menu button:hover {
-  background-color: rgb(202, 202, 202);
+  background-color: var(--primarycolor);
+  color: var(--secondarycolor);
 }
-.menu button {
-  border: none;
-  padding: 1rem;
-  color: var(--primarycolor);
-  background-color: var(--secondarycolor);
-  font-size: 1.3rem;
-  border-bottom: 1px solid var(--primarycolor);
-  max-height: 5rem;
-  width: 100%;
+
+.btn_list_inner {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+.btn_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.menu_inner {
+  position: fixed;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item {
@@ -498,4 +553,19 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.submit {
+  position: relative;
+  z-index: 9999;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+svg.delete {
+  margin-top: 0;
+  align-self: center;
+  fill: var(--primarycolor);
 }
