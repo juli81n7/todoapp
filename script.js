@@ -58,7 +58,7 @@ window.onload = function () {
     createListBtns();
   } else {
     console.log("DEN ER NULL");
-    listName = "default";
+    listName = "Shoppinglist";
     lists.push({ name: listName, arr: [] });
     // let lS = JSON.stringify(lists);
     // localStorage.setItem("lists", lS);
@@ -172,7 +172,7 @@ function createNewObject() {
     console.log("error");
   } else {
     let newObject = {};
-    newid = currentlist.length;
+    newid = Date.now();
     newObject.count = count.value;
     newObject.text = newItem.value;
     newObject.id = newid;
@@ -380,10 +380,10 @@ select.addEventListener("change", () => {
     body.dataset.theme = "dark";
     console.log("fuck af mørkt");
     localStorage.setItem("theme", "dark");
-  } else if (selectValue === "hawaii") {
-    body.dataset.theme = "hawaii";
+  } else if (selectValue === "wednesday") {
+    body.dataset.theme = "wednesday";
     console.log("fuck af hawaii");
-    localStorage.setItem("theme", "hawaii");
+    localStorage.setItem("theme", "wednesday");
   }
 });
 

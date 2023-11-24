@@ -1,8 +1,3 @@
-html,
-body {
-  height: 100%;
-}
-
 * {
   margin: 0;
   font-family: "Marcellus", serif;
@@ -19,6 +14,12 @@ body {
   --secondarycolor: #fffbf2;
   --highlight: #04590f;
   --inputtheme: light;
+}
+[data-theme="wednesday"] {
+  --primarycolor: #1d1d1c;
+  --secondarycolor: #ffbfed;
+  --highlight: #78f288;
+  --inputtheme: wednesday;
 }
 
 main {
@@ -313,6 +314,9 @@ input:focus {
   margin: 0;
   background-color: var(--primarycolor);
   border-radius: 5rem;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
 }
 
 .checked {
@@ -327,6 +331,18 @@ input:focus {
 }
 .checkbox.active .checked svg {
   display: block;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 .left {
